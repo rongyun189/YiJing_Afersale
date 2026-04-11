@@ -38,6 +38,18 @@ table td,table th{border:1px solid #ddd;padding:10px;text-align:left;font-size:1
   cursor: pointer;
   user-select: none;
 }
+  /* 菜单布局修复：防止挤在一起 */
+.left-menu ul,
+.left-menu li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.second-menu,
+.third-menu {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
   /* 清爽蓝色主题 UI */
 body {
   background: #f6f8fc;
@@ -76,6 +88,32 @@ table th {
 }
 table td {
   border-color: #eaeef6;
+}
+  /* 最终UI美化 */
+.first-menu {
+  padding: 12px 18px;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.second-menu a {
+  padding: 10px 25px;
+  font-size: 13px;
+}
+.third-menu a {
+  padding: 10px 35px;
+  font-size: 12px;
+}
+.top-box {
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.content {
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+table {
+  border-radius: 4px;
+  overflow: hidden;
 }
 </style>
 </head>
@@ -200,6 +238,28 @@ document.querySelectorAll('.second-menu > li > a').forEach(el => {
     }
   }
 })
+</script>
+  <script>
+// 一级菜单展开/收起
+document.querySelectorAll('.first-menu').forEach(function (el) {
+  el.addEventListener('click', function () {
+    let sub = this.nextElementSibling;
+    if (sub && sub.classList.contains('second-menu')) {
+      sub.style.display = (sub.style.display === 'block' ? 'none' : 'block');
+    }
+  });
+});
+
+// 三级菜单展开/收起
+document.querySelectorAll('.second-menu a').forEach(function (el) {
+  el.addEventListener('click', function (e) {
+    e.stopPropagation();
+    let sub = this.nextElementSibling;
+    if (sub && sub.classList.contains('third-menu')) {
+      sub.style.display = (sub.style.display === 'block' ? 'none' : 'block');
+    }
+  });
+});
 </script>
 </body>
 </html>
