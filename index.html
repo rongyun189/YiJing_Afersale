@@ -23,44 +23,97 @@ li:hover .third-menu{display:block;}
 .search button{padding:6px 12px;background:#2f4050;color:#fff;border:none;}
 table{width:100%;border-collapse:collapse;background:#fff;}
 table td,table th{border:1px solid #ddd;padding:10px;text-align:left;font-size:14px;}
+/* 折叠菜单增强 */
+.left-menu li {
+  list-style: none;
+}
+.left-menu .second-menu,
+.left-menu .third-menu {
+  display: none;
+}
+.left-menu .show {
+  display: block !important;
+}
+.first-menu {
+  cursor: pointer;
+  user-select: none;
+}
+  /* 蓝色主题 UI */
+body {
+  background: #f6f8fc;
+}
+.left-menu {
+  background: #1a3b6e;
+}
+.first-menu {
+  background: #163562;
+  border-bottom: 1px solid #1b4279;
+}
+.second-menu {
+  background: #234a8a;
+}
+.third-menu {
+  background: #2b5ba8;
+}
+.top-box {
+  background: #ffffff;
+  border-left: 4px solid #2b5ba8;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.content {
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border-radius: 4px;
+}
+.search button {
+  background: #2b5ba8;
+  border-radius: 3px;
+  cursor: pointer;
+}
+table th {
+  background: #ebf2fb;
+  color: #163562;
+}
+table td {
+  border-color: #eaeef6;
+}
 </style>
 </head>
 <body>
 <div class="main">
   <div class="left-menu">
     <ul>
-      <li><a class="first-menu">首页</a></li>
-      <li><a class="first-menu">系统总览</a></li>
-      <li><a class="first-menu">基础数据</a></li>
-
       <li>
-        <a class="first-menu">商品管理</a>
-        <a class="second-menu">商品列表</a>
-        <a class="second-menu">商品分类</a>
-      </li>
+  <a class="first-menu">商品管理</a>
+  <div class="second-menu">
+    <a>商品列表</a>
+    <a>商品分类</a>
+  </div>
+</li>
 
-      <li>
-        <a class="first-menu">库存管理</a>
-        <a class="second-menu">库存查询</a>
-        <a class="second-menu">入库管理</a>
-        <a class="second-menu">出库管理</a>
-      </li>
+<li>
+  <a class="first-menu">库存管理</a>
+  <div class="second-menu">
+    <a>库存查询</a>
+    <a>入库管理</a>
+    <a>出库管理</a>
+  </div>
+</li>
 
-      <li>
-        <a class="first-menu">备件管理</a>
-        <a class="second-menu">备件信息</a>
-        <a class="third-menu">备件列表</a>
-        <a class="third-menu">备件入库</a>
-        <a class="third-menu">备件出库</a>
-        <a class="second-menu">备件分类</a>
-      </li>
-
-      <li><a class="first-menu">工单管理</a></li>
-      <li><a class="first-menu">报表统计</a></li>
-      <li><a class="first-menu">系统设置</a></li>
+<li>
+  <a class="first-menu">备件管理</a>
+  <div class="second-menu">
+    <a>备件信息</a>
+    <div class="third-menu">
+      <a>备件列表</a>
+      <a>备件入库</a>
+      <a>备件出库</a>
+    </div>
+    <a>备件分类</a>
+  </div>
+</li>
     </ul>
   </div>
-
   <div class="right-content">
     <div class="top-box">
       <h3>备件信息</h3>
@@ -91,5 +144,25 @@ table td,table th{border:1px solid #ddd;padding:10px;text-align:left;font-size:1
     </div>
   </div>
 </div>
+  <script>
+// 左侧菜单折叠展开功能
+document.querySelectorAll('.first-menu').forEach(item => {
+  item.addEventListener('click', function(e) {
+    let sub = this.nextElementSibling;
+    if (sub && sub.classList.contains('second-menu')) {
+      sub.classList.toggle('show');
+    }
+  });
+});
+document.querySelectorAll('.second-menu').forEach(item => {
+  item.addEventListener('click', function(e) {
+    e.stopPropagation();
+    let sub = this.nextElementSibling;
+    if (sub && sub.classList.contains('third-menu')) {
+      sub.classList.toggle('show');
+    }
+  });
+});
+</script>
 </body>
 </html>
