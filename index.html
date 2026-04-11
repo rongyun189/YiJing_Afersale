@@ -38,7 +38,7 @@ table td,table th{border:1px solid #ddd;padding:10px;text-align:left;font-size:1
   cursor: pointer;
   user-select: none;
 }
-  /* 蓝色主题 UI */
+  /* 清爽蓝色主题 UI */
 body {
   background: #f6f8fc;
 }
@@ -84,33 +84,50 @@ table td {
   <div class="left-menu">
     <ul>
       <li>
-  <a class="first-menu">商品管理</a>
-  <div class="second-menu">
-    <a>商品列表</a>
-    <a>商品分类</a>
-  </div>
+  <a class="first-menu">首页</a>
 </li>
-
+<li>
+  <a class="first-menu">系统总览</a>
+</li>
+<li>
+  <a class="first-menu">基础数据</a>
+</li>
+<li>
+  <a class="first-menu">商品管理</a>
+  <ul class="second-menu">
+    <li><a>商品列表</a></li>
+    <li><a>商品分类</a></li>
+  </ul>
+</li>
 <li>
   <a class="first-menu">库存管理</a>
-  <div class="second-menu">
-    <a>库存查询</a>
-    <a>入库管理</a>
-    <a>出库管理</a>
-  </div>
+  <ul class="second-menu">
+    <li><a>库存查询</a></li>
+    <li><a>入库管理</a></li>
+    <li><a>出库管理</a></li>
+  </ul>
 </li>
-
 <li>
   <a class="first-menu">备件管理</a>
-  <div class="second-menu">
-    <a>备件信息</a>
-    <div class="third-menu">
-      <a>备件列表</a>
-      <a>备件入库</a>
-      <a>备件出库</a>
-    </div>
-    <a>备件分类</a>
-  </div>
+  <ul class="second-menu">
+    <li><a>备件信息</a>
+      <ul class="third-menu">
+        <li><a>备件列表</a></li>
+        <li><a>备件入库</a></li>
+        <li><a>备件出库</a></li>
+      </ul>
+    </li>
+    <li><a>备件分类</a></li>
+  </ul>
+</li>
+<li>
+  <a class="first-menu">工单管理</a>
+</li>
+<li>
+  <a class="first-menu">报表统计</a>
+</li>
+<li>
+  <a class="first-menu">系统设置</a>
 </li>
     </ul>
   </div>
@@ -163,6 +180,26 @@ document.querySelectorAll('.second-menu').forEach(item => {
     }
   });
 });
+</script>
+  <script>
+// 菜单展开收起
+document.querySelectorAll('.first-menu').forEach(el => {
+  el.onclick = () => {
+    let sub = el.nextElementSibling;
+    if (sub && sub.classList.contains('second-menu')) {
+      sub.style.display = sub.style.display=='block'?'none':'block';
+    }
+  }
+})
+document.querySelectorAll('.second-menu > li > a').forEach(el => {
+  el.onclick = (e) => {
+    e.stopPropagation();
+    let sub = el.nextElementSibling;
+    if (sub && sub.classList.contains('third-menu')) {
+      sub.style.display = sub.style.display=='block'?'none':'block';
+    }
+  }
+})
 </script>
 </body>
 </html>
