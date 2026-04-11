@@ -1,168 +1,95 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>易京售后管理系统</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Microsoft YaHei", sans-serif;
-        }
-        body {
-            background: #f5f7fa;
-            color: #333;
-        }
-        .header {
-            background: #2d57ff;
-            color: white;
-            padding: 16px 30px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .card h2 {
-            font-size: 16px;
-            margin-bottom: 16px;
-            color: #2d57ff;
-        }
-        .row {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-        .col {
-            flex: 1;
-        }
-        label {
-            display: block;
-            font-size: 14px;
-            margin-bottom: 6px;
-            color: #666;
-        }
-        input, select {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-        .btn {
-            background: #2d57ff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .btn:hover {
-            background: #1a42e0;
-        }
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        .table th, .table td {
-            border: 1px solid #eee;
-            padding: 12px;
-            text-align: left;
-            font-size: 14px;
-        }
-        .table th {
-            background: #f9fafb;
-            color: #666;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奕境售后管理系统</title>
+<style>
+body{margin:0;padding:0;font-family:"Microsoft YaHei";background:#f5f5f5;}
+.main{display:flex;min-height:100vh;}
+.left-menu{width:220px;background:#2f4050;color:#fff;}
+.left-menu ul{list-style:none;padding:0;margin:0;}
+.first-menu{display:block;padding:12px 15px;background:#1f2d3d;color:#fff;text-decoration:none;font-size:14px;}
+.second-menu{display:block;padding:10px 15px 10px 25px;background:#2f4050;color:#fff;text-decoration:none;font-size:13px;}
+.third-menu{display:block;padding:10px 15px 10px 35px;background:#3d5166;color:#fff;text-decoration:none;font-size:13px;}
+.second-menu, .third-menu{display:none;}
+li:hover .second-menu{display:block;}
+li:hover .third-menu{display:block;}
+.right-content{flex:1;padding:20px;}
+.top-box{background:#fff;padding:15px;margin-bottom:15px;border-left:4px solid #2f4050;}
+.content{background:#fff;padding:20px;}
+.search{margin-bottom:15px;}
+.search input{padding:6px 10px;margin-right:5px;}
+.search button{padding:6px 12px;background:#2f4050;color:#fff;border:none;}
+table{width:100%;border-collapse:collapse;background:#fff;}
+table td,table th{border:1px solid #ddd;padding:10px;text-align:left;font-size:14px;}
+</style>
 </head>
 <body>
-    <div class="header">易京售后管理系统</div>
-    <div class="container">
-        <div class="card">
-            <h2>工单信息</h2>
-            <div class="row">
-                <div class="col">
-                    <label>工单编号</label>
-                    <input type="text" value="WG20250001" readonly>
-                </div>
-                <div class="col">
-                    <label>客户姓名</label>
-                    <input type="text" placeholder="请输入">
-                </div>
-                <div class="col">
-                    <label>联系电话</label>
-                    <input type="text" placeholder="请输入">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label>设备类型</label>
-                    <select>
-                        <option>洗衣机</option>
-                        <option>冰箱</option>
-                        <option>空调</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <label>故障类型</label>
-                    <select>
-                        <option>不启动</option>
-                        <option>漏水</option>
-                        <option>噪音大</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <label>工单状态</label>
-                    <select>
-                        <option>待处理</option>
-                        <option>处理中</option>
-                        <option>已完成</option>
-                    </select>
-                </div>
-            </div>
-            <button class="btn">保存提交</button>
-        </div>
+<div class="main">
+  <div class="left-menu">
+    <ul>
+      <li><a class="first-menu">首页</a></li>
+      <li><a class="first-menu">系统总览</a></li>
+      <li><a class="first-menu">基础数据</a></li>
 
-        <div class="card">
-            <h2>工单列表</h2>
-            <table class="table">
-                <tr>
-                    <th>工单编号</th>
-                    <th>客户</th>
-                    <th>设备</th>
-                    <th>状态</th>
-                    <th>操作</th>
-                </tr>
-                <tr>
-                    <td>WG20250001</td>
-                    <td>张三</td>
-                    <td>洗衣机</td>
-                    <td>待处理</td>
-                    <td>查看 / 编辑</td>
-                </tr>
-                <tr>
-                    <td>WG20250002</td>
-                    <td>李四</td>
-                    <td>空调</td>
-                    <td>处理中</td>
-                    <td>查看 / 编辑</td>
-                </tr>
-            </table>
-        </div>
+      <li>
+        <a class="first-menu">商品管理</a>
+        <a class="second-menu">商品列表</a>
+        <a class="second-menu">商品分类</a>
+      </li>
+
+      <li>
+        <a class="first-menu">库存管理</a>
+        <a class="second-menu">库存查询</a>
+        <a class="second-menu">入库管理</a>
+        <a class="second-menu">出库管理</a>
+      </li>
+
+      <li>
+        <a class="first-menu">备件管理</a>
+        <a class="second-menu">备件信息</a>
+        <a class="third-menu">备件列表</a>
+        <a class="third-menu">备件入库</a>
+        <a class="third-menu">备件出库</a>
+        <a class="second-menu">备件分类</a>
+      </li>
+
+      <li><a class="first-menu">工单管理</a></li>
+      <li><a class="first-menu">报表统计</a></li>
+      <li><a class="first-menu">系统设置</a></li>
+    </ul>
+  </div>
+
+  <div class="right-content">
+    <div class="top-box">
+      <h3>备件信息</h3>
     </div>
+    <div class="content">
+      <div class="search">
+        <input type="text" placeholder="备件名称">
+        <button>搜索</button>
+        <button>新增</button>
+        <button>导出</button>
+      </div>
+      <table>
+        <tr>
+          <th>备件ID</th>
+          <th>备件名称</th>
+          <th>规格型号</th>
+          <th>库存数量</th>
+          <th>操作</th>
+        </tr>
+        <tr>
+          <td>1001</td>
+          <td>空调压缩机</td>
+          <td>3P</td>
+          <td>25</td>
+          <td>查看 编辑 删除</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
 </body>
 </html>
