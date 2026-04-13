@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>奕境售后管理系统</title>
+  <meta charset="UTF-8">
+  <title>奕境售后管理系统</title>
+  <style>
 /* 最终清爽蓝色主题 */
 body{ margin:0; padding:0; font-family:"Microsoft YaHei"; background:#f6f8fc; }
 .main{ display:flex; min-height:100vh; }
@@ -83,121 +83,101 @@ html, body {
   overflow-y: auto;
   flex: 1;
 }
+  </style>
 </head>
 <body>
-<div class="main">
-  <div class="left-menu">
-   <!-- 顶部标题 -->
-<div style="background:#1F458E; color:white; padding:14px 20px; font-size:16px; font-weight:bold;">
-    奕境售后管理系统
-</div>
-
-<!-- 左侧菜单 -->
-<div class="left-menu">
-  <ul>
-    <li><a class="first-menu">工作台</a></li>
-
-    <li>
-      <a class="first-menu">服务管理</a>
-      <ul class="second-menu" style="display:block;"></ul>
-    </li>
-
-    <li>
-      <a class="first-menu">备件管理</a>
-      <ul class="second-menu" style="display:block;">
-
+  <div style="background:#1F458E; color:white; padding:14px 20px; font-size:16px; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
+    <div>奕境售后管理系统</div>
+    <div id="toggleMenu" style="cursor:pointer; font-size:20px;">☰</div>
+  </div>
+  <div class="main">
+    <div class="left-menu">
+      <ul>
         <li>
-          <a>备件基础数据</a>
-          <ul class="third-menu" style="display:block;">
-            <li><a>备件目录</a></li>
-            <li><a>集单时间</a></li>
-            <li><a>外采供应商</a></li>
+          <a class="first-menu">工作台</a>
+        </li>
+        <li>
+          <a class="first-menu">服务管理</a>
+        </li>
+        <li>
+          <a class="first-menu">备件管理</a>
+          <ul class="second-menu">
+            <li>
+              <a>备件基础数据</a>
+              <ul class="third-menu">
+                <li><a href="#" onclick="showPage('page1')">备件目录</a></li>
+                <li><a href="#" onclick="showPage('page2')">集单时间</a></li>
+                <li><a href="#" onclick="showPage('page3')">外采供应商</a></li>
+              </ul>
+            </li>
+            <li>
+              <a>备件采购管理</a>
+              <ul class="third-menu">
+                <li><a href="#" onclick="showPage('page4')">备件采购</a></li>
+                <li><a href="#" onclick="showPage('page5')">备件外采</a></li>
+                <li><a href="#" onclick="showPage('page6')">厂端缺件</a></li>
+                <li><a href="#" onclick="showPage('page7')">备件索赔</a></li>
+              </ul>
+            </li>
+            <li><a href="#" onclick="showPage('page8')">备件销售管理</a></li>
+            <li><a href="#" onclick="showPage('page9')">备件出入库管理</a></li>
+            <li><a href="#" onclick="showPage('page10')">备件库存管理</a></li>
+            <li><a href="#" onclick="showPage('page11')">备件报表查询</a></li>
           </ul>
         </li>
-
         <li>
-          <a>备件采购管理</a>
-          <ul class="third-menu" style="display:block;">
-            <li><a>备件采购</a></li>
-            <li><a>备件外采</a></li>
-            <li><a>厂端缺件</a></li>
-            <li><a>备件索赔</a></li>
-          </ul>
+          <a class="first-menu">系统设置</a>
         </li>
-
-        <li><a>备件销售管理</a></li>
-        <li><a>备件出入库管理</a></li>
-        <li><a>备件库存管理</a></li>
-        <li><a>备件报表查询</a></li>
-
       </ul>
-    </li>
-
-    <li><a class="first-menu">系统设置</a></li>
-  </ul>
-</div>
+    </div>
     <div class="content">
-      
+      <div id="page1" class="page show">备件目录页面内容</div>
+      <div id="page2" class="page">集单时间页面内容</div>
+      <div id="page3" class="page">外采供应商页面内容</div>
+      <div id="page4" class="page">备件采购页面内容</div>
+      <div id="page5" class="page">备件外采页面内容</div>
+      <div id="page6" class="page">厂端缺件页面内容</div>
+      <div id="page7" class="page">备件索赔页面内容</div>
+      <div id="page8" class="page">备件销售管理页面内容</div>
+      <div id="page9" class="page">备件出入库管理页面内容</div>
+      <div id="page10" class="page">备件库存管理页面内容</div>
+      <div id="page11" class="page">备件报表查询页面内容</div>
     </div>
   </div>
-</div>
-  <script>
-// 菜单展开/收起
-document.querySelectorAll('.first-menu').forEach(el => {
-  el.onclick = () => {
-    let sub = el.nextElementSibling;
-    if(sub) sub.style.display = sub.style.display=='block'?'none':'block';
-  }
-})
-document.querySelectorAll('.second-menu a').forEach(el => {
-  el.onclick = (e) => {
-    e.stopPropagation();
-    let sub = el.nextElementSibling;
-    if(sub) sub.style.display = sub.style.display=='block'?'none':'block';
-  }
-})
-</script>
-  <script>
-// 菜单展开收起
-document.querySelectorAll('.first-menu').forEach(el => {
-  el.onclick = () => {
-    let sub = el.nextElementSibling;
-    if (sub && sub.classList.contains('second-menu')) {
-      sub.style.display = sub.style.display=='block'?'none':'block';
-    }
-  }
-})
-document.querySelectorAll('.second-menu > li > a').forEach(el => {
-  el.onclick = (e) => {
-    e.stopPropagation();
-    let sub = el.nextElementSibling;
-    if (sub && sub.classList.contains('third-menu')) {
-      sub.style.display = sub.style.display=='block'?'none':'block';
-    }
-  }
-})
-</script>
-  <script>
-// 一级菜单展开/收起
-document.querySelectorAll('.first-menu').forEach(el => {
-  el.onclick = function () {
-    let sub = this.nextElementSibling;
-    if (sub) {
-      sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
-    }
-  }
-});
 
-// 二级菜单展开/收起
-document.querySelectorAll('.second-menu a').forEach(el => {
-  el.onclick = function (e) {
-    e.stopPropagation();
-    let sub = this.nextElementSibling;
-    if (sub) {
-      sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('show'));
+      document.getElementById(pageId).classList.add('show');
     }
-  }
-});
-</script>
+
+    // 一级菜单展开/收起
+    document.querySelectorAll('.first-menu').forEach(el => {
+      el.onclick = function() {
+        let sub = this.nextElementSibling;
+        if (sub) {
+          sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+          this.classList.toggle('open');
+        }
+      }
+    });
+
+    // 二级菜单展开/收起
+    document.querySelectorAll('.second-menu > li > a').forEach(el => {
+      el.onclick = function(e) {
+        e.stopPropagation();
+        let sub = this.nextElementSibling;
+        if (sub) {
+          sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+          this.classList.toggle('open');
+        }
+      }
+    });
+
+    // 左侧菜单显示/隐藏
+    document.getElementById('toggleMenu').onclick = function() {
+      document.querySelector('.left-menu').classList.toggle('hide');
+    }
+  </script>
 </body>
 </html>
