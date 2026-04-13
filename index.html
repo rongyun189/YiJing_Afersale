@@ -142,8 +142,13 @@ html, body {
             color:white;
             background:#183774;
             cursor:pointer;
-            border-top:1px solid rgba(255,255,255,0.1);">
-  ◀ 收起菜单
+            border-top:1px solid rgba(255,255,255,0.1);
+            position:fixed;
+            bottom:0;
+            width:220px;
+            box-sizing:border-box;">
+  &lt; 收起
+</div>
 </div>
     </div>
     <div class="content">
@@ -194,16 +199,11 @@ html, body {
     document.getElementById('toggleMenu').onclick = function() {
       document.querySelector('.left-menu').classList.toggle('hide');
     }
-    // 左侧菜单 收起 / 展开
+    // 左侧菜单收起展开（修复版）
 document.getElementById('toggleBtn').onclick = function () {
   let menu = document.querySelector('.left-menu');
   menu.classList.toggle('hide');
-  
-  if(menu.classList.contains('hide')){
-    this.textContent = '> 展开';
-  }else{
-    this.textContent = '< 收起';
-  }
+  this.textContent = menu.classList.contains('hide') ? '> 展开' : '< 收起';
 };
   </script>
 </body>
