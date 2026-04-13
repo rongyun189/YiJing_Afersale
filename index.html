@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>奕境售后管理系统</title>
-<style>
 /* 最终清爽蓝色主题 */
 body{ margin:0; padding:0; font-family:"Microsoft YaHei"; background:#f6f8fc; }
 .main{ display:flex; min-height:100vh; }
@@ -46,18 +45,27 @@ body{ margin:0; padding:0; font-family:"Microsoft YaHei"; background:#f6f8fc; }
   text-decoration: none;
   font-size: 12px;
 }
-  /* 菜单箭头 */
-.first-menu:after,
-.second-menu > li > a:after {
+
+/* 菜单箭头：修复展开变成▼ */
+.first-menu:after {
   content: ' ▶';
   font-size: 12px;
   opacity: 0.8;
 }
-.first-menu.open:after,
-.second-menu > li > a.open:after {
-  content: ' ▼';
+.first-menu.open:after {
+  content: ' ▼' !important;
 }
-  /* 左右区域独立滚动 */
+
+.second-menu li a:after {
+  content: ' ▶';
+  font-size: 12px;
+  opacity: 0.8;
+}
+.second-menu li a.open:after {
+  content: ' ▼' !important;
+}
+
+/* 左右区域独立滚动 */
 html, body {
   height: 100%;
   overflow: hidden;
@@ -75,7 +83,6 @@ html, body {
   overflow-y: auto;
   flex: 1;
 }
-</style>
 </head>
 <body>
 <div class="main">
